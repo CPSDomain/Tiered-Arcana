@@ -2,6 +2,7 @@ package com.bobroflza.tieredarcana.registry;
 
 import com.bobroflza.tieredarcana.TieredArcana;
 import com.bobroflza.tieredarcana.block.ArcanePedestalBlock;
+import com.bobroflza.tieredarcana.block.AstralCrystalBlock;
 import com.bobroflza.tieredarcana.block.CatalystCrystalBlock;
 import com.bobroflza.tieredarcana.block.LightOrbBlock;
 import com.bobroflza.tieredarcana.block.VoidCrystalCoreBlock;
@@ -40,6 +41,11 @@ public final class ModBlocks {
     public static final RegistryObject<Block> VOID_CRYSTAL_BLOCK = BLOCKS.register("void_crystal_block",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
                     .strength(3f, 9f).sound(SoundType.AMETHYST).lightLevel(s -> 7).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> ASTRAL_CRYSTAL = BLOCKS.register("astral_crystal",
+            () -> new AstralCrystalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD)
+                    .strength(3f, 9f).sound(SoundType.AMETHYST_CLUSTER).noOcclusion().lightLevel(s -> 15)
+                    .requiresCorrectToolForDrops().pushReaction(PushReaction.BLOCK)));
 
     public static final RegistryObject<Block> VOID_CRYSTAL_CORE = BLOCKS.register("void_crystal_core",
             () -> new VoidCrystalCoreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:blank_scroll"
+    },
+    {
+      "item": "tieredarcana:astral_essence"
+    },
+    {
+      "item": "tieredarcana:void_crystal"
+    },
+    {
+      "item": "minecraft:magma_block"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:scroll_meteor",
+    "count": 1
+  }
+}

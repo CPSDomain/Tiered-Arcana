@@ -28,6 +28,11 @@ public final class ModItems {
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> VOID_CRYSTAL = ITEMS.register("void_crystal",
             () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> ASTRAL_ESSENCE = ITEMS.register("astral_essence",
+            () -> new Item(new Item.Properties().rarity(Rarity.EPIC)) {
+                @Override
+                public boolean isFoil(net.minecraft.world.item.ItemStack stack) { return true; }
+            });
 
     // ---- magic gear ----
     public static final RegistryObject<Item> SPELLBOOK = ITEMS.register("spellbook",
@@ -41,6 +46,9 @@ public final class ModItems {
     /** Tier 3 wand: Tier 3 spells, -20% mana cost, 150% power. */
     public static final RegistryObject<Item> ARCHMAGE_WAND = ITEMS.register("archmage_wand",
             () -> new WandItem(new Item.Properties().rarity(Rarity.RARE), 3, 3, 0.8f, 1.5f));
+    /** Tier 4 wand: every spell, -30% mana cost, 200% power. */
+    public static final RegistryObject<Item> ASTRAL_WAND = ITEMS.register("astral_wand",
+            () -> new WandItem(new Item.Properties().rarity(Rarity.EPIC).fireResistant(), 4, 4, 0.7f, 2.0f));
 
     // ---- scrolls (one item per spell) ----
     public static final RegistryObject<Item> BLANK_SCROLL = ITEMS.register("blank_scroll", () -> new Item(new Item.Properties()));
@@ -72,6 +80,8 @@ public final class ModItems {
     public static final RegistryObject<Item> ARCANE_PEDESTAL = block("arcane_pedestal", ModBlocks.ARCANE_PEDESTAL);
     public static final RegistryObject<Item> CATALYST_CRYSTAL = block("catalyst_crystal", ModBlocks.CATALYST_CRYSTAL);
     public static final RegistryObject<Item> VOID_CRYSTAL_BLOCK = block("void_crystal_block", ModBlocks.VOID_CRYSTAL_BLOCK);
+    public static final RegistryObject<Item> ASTRAL_CRYSTAL = ITEMS.register("astral_crystal",
+            () -> new BlockItem(ModBlocks.ASTRAL_CRYSTAL.get(), new Item.Properties().rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> VOID_CRYSTAL_CORE = ITEMS.register("void_crystal_core",
             () -> new BlockItem(ModBlocks.VOID_CRYSTAL_CORE.get(), new Item.Properties().rarity(Rarity.RARE)));
 

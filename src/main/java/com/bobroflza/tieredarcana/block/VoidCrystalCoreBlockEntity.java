@@ -176,16 +176,23 @@ public class VoidCrystalCoreBlockEntity extends BlockEntity {
         BlockPos r = runes.get(sl.random.nextInt(runes.size()));
         sl.sendParticles(CYAN, r.getX() + 0.5, r.getY() + 1.05, r.getZ() + 0.5, 1, 0.3, 0, 0.3, 0);
 
-        // Tier 3+: energy beams from the obelisk caps into the crystal
+        // Tier 3+: energy beams from the obelisk caps (Tier 4: the spire crystals) into the crystal
         if (tier >= 3) {
             double cx = worldPosition.getX() + 0.5, cy = worldPosition.getY() + 0.5, cz = worldPosition.getZ() + 0.5;
-            for (BlockPos o : ShrineStructure.OBELISK_TOPS) {
+            for (BlockPos o : tier >= 4 ? ShrineStructure.SPIRE_TOPS : ShrineStructure.OBELISK_TOPS) {
                 double sx = worldPosition.getX() + o.getX() + 0.5, sy = worldPosition.getY() + o.getY() + 0.5,
                         sz = worldPosition.getZ() + o.getZ() + 0.5;
                 for (int i = 1; i < 6; i++) {
                     double f = i / 6.0;
                     sl.sendParticles(PINK, sx + (cx - sx) * f, sy + (cy - sy) * f, sz + (cz - sz) * f, 1, 0.02, 0.02, 0.02, 0);
                 }
+            }
+        }
+        // Tier 4: a pillar of light rising from the crystal into the sky
+        if (tier >= 4) {
+            double cx = worldPosition.getX() + 0.5, cz = worldPosition.getZ() + 0.5;
+            for (int i = 1; i <= 12; i++) {
+                sl.sendParticles(ParticleTypes.END_ROD, cx, worldPosition.getY() + 0.8 + i * 1.5, cz, 1, 0.05, 0.3, 0.05, 0.01);
             }
         }
     }

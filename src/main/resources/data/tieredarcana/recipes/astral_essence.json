@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "VGV",
+    "GNG",
+    "VGV"
+  ],
+  "key": {
+    "V": {
+      "item": "tieredarcana:void_crystal"
+    },
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:astral_essence",
+    "count": 4
+  }
+}

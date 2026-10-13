@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SAS",
+    "AVA",
+    "SAS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "A": {
+      "item": "tieredarcana:astral_essence"
+    },
+    "V": {
+      "item": "tieredarcana:void_crystal_block"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:astral_crystal",
+    "count": 1
+  }
+}

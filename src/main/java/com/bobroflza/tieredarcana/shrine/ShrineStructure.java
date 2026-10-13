@@ -43,7 +43,7 @@ import java.util.function.Supplier;
  */
 public final class ShrineStructure {
     public static final TagKey<Block> SHRINE_BASE = TagKey.create(Registries.BLOCK, TieredArcana.id("shrine_base"));
-    public static final int MAX_TIER = 3; // Tier 4 (Ascended) comes in a later update
+    public static final int MAX_TIER = 4;
 
     public static final BlockPos PEDESTAL_OFFSET = new BlockPos(0, -2, 0);
 
@@ -53,6 +53,8 @@ public final class ShrineStructure {
 
     /** The Void Crystal caps on top of the two Tier 3 obelisks – beams of energy flow from here to the core. */
     public static final List<BlockPos> OBELISK_TOPS = List.of(new BlockPos(-4, 4, 0), new BlockPos(4, 4, 0));
+    /** The Astral Crystals crowning the obelisk spires at Tier 4 – beams flow from here instead. */
+    public static final List<BlockPos> SPIRE_TOPS = List.of(new BlockPos(-4, 6, 0), new BlockPos(4, 6, 0));
 
     /** One required block: where, what's accepted, and what to show as a ghost preview. */
     public record Entry(BlockPos offset, Predicate<BlockState> test, Supplier<BlockState> display, boolean rune) {
@@ -115,6 +117,28 @@ public final class ShrineStructure {
             t3.add(voidBlock(x, 4, 0));
         }
         TIERS.add(Collections.unmodifiableList(t3));
+
+        // ---------------- Tier 4: Ascended ----------------
+        // An octagonal outer ring around the 9x9 floor (radius 5, corners cut), with runestones at the
+        // 4 compass points and the 8 cut-corner edges, plus a spire on each obelisk:
+        //   y=6  A   Astral Crystal
+        //   y=5  R   Arcane Runestone   (on top of the obelisk's Void Crystal cap)
+        List<Entry> t4 = new ArrayList<>();
+        for (int x = -5; x <= 5; x++) {
+            for (int z = -5; z <= 5; z++) {
+                if (Math.max(Math.abs(x), Math.abs(z)) != 5) continue;
+                int d = Math.abs(x) + Math.abs(z);
+                if (d > 8) continue; // cut corners -> octagon
+                boolean rune = x == 0 || z == 0 || d == 8;
+                t4.add(rune ? runestone(x, -3, z) : base(x, -3, z));
+            }
+        }
+        for (int x : new int[]{-4, 4}) {
+            t4.add(runestone(x, 5, 0));
+            t4.add(new Entry(new BlockPos(x, 6, 0), s -> s.is(ModBlocks.ASTRAL_CRYSTAL.get()),
+                    () -> ModBlocks.ASTRAL_CRYSTAL.get().defaultBlockState(), false));
+        }
+        TIERS.add(Collections.unmodifiableList(t4));
     }
 
     private static Entry voidBlock(int x, int y, int z) {
@@ -164,6 +188,7 @@ public final class ShrineStructure {
         return switch (tier) {
             case 2 -> ModItems.INFUSED_GEM.get();
             case 3 -> ModItems.VOID_CRYSTAL.get();
+            case 4 -> ModItems.ASTRAL_ESSENCE.get();
             default -> null;
         };
     }
@@ -179,6 +204,6 @@ public final class ShrineStructure {
 
     /** Half-width of the rune circle players stand in for the regen boost. */
     public static int circleRadius(int tier) {
-        return tier <= 1 ? 2 : 4;
+        return tier <= 1 ? 2 : tier <= 3 ? 4 : 5;
     }
 }

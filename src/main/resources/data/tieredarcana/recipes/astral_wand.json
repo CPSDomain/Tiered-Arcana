@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " AN",
+    " WA",
+    "R  "
+  ],
+  "key": {
+    "A": {
+      "item": "tieredarcana:astral_essence"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "W": {
+      "item": "tieredarcana:archmage_wand"
+    },
+    "R": {
+      "item": "minecraft:end_rod"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:astral_wand",
+    "count": 1
+  }
+}
