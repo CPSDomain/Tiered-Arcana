@@ -1,6 +1,7 @@
 package com.bobroflza.tieredarcana.client.screen;
 
 import com.bobroflza.tieredarcana.client.ClientArcaneData;
+import com.bobroflza.tieredarcana.item.SpellScrollItem;
 import com.bobroflza.tieredarcana.network.ModNetwork;
 import com.bobroflza.tieredarcana.network.SelectSpellPacket;
 import com.bobroflza.tieredarcana.spell.School;
@@ -163,6 +164,16 @@ public class SpellbookScreen extends Screen {
         for (FormattedCharSequence line : font.split(s.getDescription(), w)) {
             g.drawString(font, line, x, y, 0xD8CCEA, false);
             y += 10;
+        }
+
+        if (!known && !s.getCatalysts().isEmpty()) {
+            y += 4;
+            g.drawString(font, Component.translatable("tooltip.tieredarcana.scroll.catalysts"), x, y, 0xC77DFF, false);
+            y += 10;
+            for (FormattedCharSequence line : font.split(SpellScrollItem.catalystList(s), w)) {
+                g.drawString(font, line, x, y, 0xB0A4C4, false);
+                y += 10;
+            }
         }
 
         Component status;

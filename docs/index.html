@@ -54,11 +54,11 @@
 <header>
   <h1>Tiered Arcana</h1>
   <p>Build the Void Crystal Shrine and grow it tier by tier. Learn spells into your spellbook and cast them with a wand, fuelled by mana.</p>
-  <span class="ver">v0.1.0 · Forge 1.20.1 · by BobRoflza</span>
+  <span class="ver">v0.2.0 · Forge 1.20.1 · by BobRoflza</span>
 </header>
 <nav>
   <a href="#start">Getting started</a><a href="#shrine">The Shrine</a><a href="#ritual">Rituals</a>
-  <a href="#casting">Casting</a><a href="#mana">Mana</a><a href="#spells">Spells</a><a href="#items">Items &amp; recipes</a><a href="#config">Config</a>
+  <a href="#casting">Casting</a><a href="#mana">Mana</a><a href="#spells">Spells</a><a href="#items">Items &amp; recipes</a><a href="#compat">JEI &amp; autocrafting</a><a href="#config">Config</a>
 </nav>
 <main>
 
@@ -101,11 +101,43 @@ B B R B B   floor</div>
   </div>
   <p><b>Shrine base</b> accepts: deepslate bricks or tiles (cracked too), polished deepslate, chiseled deepslate, and polished blackstone bricks.</p>
 
-  <h3>Coming tiers</h3>
+  <h3>Tier 2 – Pylons</h3>
+  <div class="grid">
+    <div class="card">
+      <b>Floor (top view, 9×9)</b>
+      <div class="shrine" style="grid-template-columns:repeat(9,26px)">
+        <div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="Pd" style="width:26px;height:26px">P</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="Pd" style="width:26px;height:26px">P</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px">B</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px">B</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px">B</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px">B</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px">B</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="R" style="width:26px;height:26px">R</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px;opacity:.45">b</div><div class="B" style="width:26px;height:26px">B</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="Pd" style="width:26px;height:26px">P</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="B" style="width:26px;height:26px">B</div><div class="Pd" style="width:26px;height:26px">P</div><div class="R" style="width:26px;height:26px">R</div>
+        <div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div><div class="R" style="width:26px;height:26px">R</div>
+      </div>
+      <div class="legend"><span><i class="sw R"></i>Runestone</span><span><i class="sw B"></i>Shrine base</span><span><i class="sw Pd"></i>Pylon</span><span style="opacity:.6">faded = Tier 1</span></div>
+    </div>
+    <div class="card">
+      <b>Each Catalyst Pylon (×4)</b>
+      <div class="side">◆   Catalyst Crystal
+R   Arcane Runestone
+R   Arcane Runestone
+B   floor (base block)</div>
+      <p style="margin:8px 0 0;color:var(--muted);font-size:.9rem">The four pylons stand on the inner corners of the new base ring, 3 blocks out from the centre in both directions. Tier 2 adds 32 runestones to the outer border, 24 base blocks, plus 8 runestones and 4 Catalyst Crystals for the pylons.</p>
+    </div>
+  </div>
+  <ol class="card">
+    <li>Build the extra rings and the four pylons. Hold a wand near the crystal and ghost blocks show you every missing piece.</li>
+    <li>When everything is placed, you get <b>"Tier 2 is built!"</b> and an Infused Gem floats over the pedestal as a hint.</li>
+    <li>Put an <b>Infused Gem</b> on the pedestal and right-click the crystal. The gem is consumed and the shrine <b>awakens to Tier 2</b>. The crystal grows and the regen circle widens to the full 9×9 floor.</li>
+  </ol>
+
+  <h3>All tiers</h3>
   <div class="tablewrap card"><table>
     <tr><th>Tier</th><th>Adds</th><th>Unlocks</th></tr>
     <tr><td>1 · Arcane Circle</td><td>5×5 floor, rune cross, pedestal, core</td><td>Tier 1 spells, Mana Crystals (3), gem charging</td></tr>
-    <tr class="soon"><td>2 · Pylons</td><td>9×9 floor, cyan rune square, 4 corner Catalyst Pylons with crystal tips</td><td>Tier 2 spells, Adept Wand, ingredient rituals</td></tr>
+    <tr><td>2 · Pylons</td><td>9×9 floor, cyan rune square, 4 corner Catalyst Pylons with crystal tips</td><td>Tier 2 spells, catalyst rituals, 6 Mana Crystals, faster gem charging. Key offering: Infused Gem</td></tr>
     <tr class="soon"><td>3 · Obelisks</td><td>Two tall towers with runestones and Void Crystal accents, beam pillar</td><td>Tier 3 spells, Archmage Wand</td></tr>
     <tr class="soon"><td>4 · Ascended</td><td>Stepped octagonal base, spire crystals, outer rune ring</td><td>Tier 4 spells, Astral Wand</td></tr>
   </table></div>
@@ -118,6 +150,7 @@ B B R B B   floor</div>
     <li>Right-click the <b>Void Crystal Core</b>. If the shrine tier is high enough for that spell, the ritual starts.</li>
     <li>Stay within 10 blocks for 5 seconds. A beam rises from the pedestal, the runes light up one by one, and the crystal spins faster.</li>
     <li>When the ritual finishes, the scroll is consumed and the spell is written into your spellbook.</li>
+    <li><b>Tier 2+ spells</b> also need <b>catalysts</b>: put one item on each of the 4 Catalyst Crystals before you start, in any order. Pink streams flow from the crystals into the core, and the catalysts are used up when the ritual finishes. The scroll's tooltip and the spellbook both list the catalysts.</li>
   </ol>
   <p class="note">The ritual breaks if you take the scroll off the pedestal or break part of the shrine. It also fizzles if you walk too far away. In both cases you keep the scroll.</p>
 </section>
@@ -131,7 +164,7 @@ B B R B B   floor</div>
       <div class="tablewrap"><table class="compact">
         <tr><th>Wand</th><th>Max spell</th><th>Cost</th><th>Power</th></tr>
         <tr><td>Apprentice</td><td>Tier 1</td><td>100%</td><td>100%</td></tr>
-        <tr class="soon"><td>Adept</td><td>Tier 2</td><td>90%</td><td>125%</td></tr>
+        <tr><td>Adept</td><td>Tier 2</td><td>90%</td><td>125%</td></tr>
         <tr class="soon"><td>Archmage</td><td>Tier 3</td><td>80%</td><td>150%</td></tr>
         <tr class="soon"><td>Astral</td><td>Tier 4</td><td>70%</td><td>200%</td></tr>
       </table></div>
@@ -171,25 +204,50 @@ B B R B B   floor</div>
     <tr><td>Meteor</td><td><span class="pill fire">Fire</span></td><td>4</td><td>60</td><td>15s</td><td>Explosive meteor from the sky</td></tr>
     <tr><td>Void Rift</td><td><span class="pill void">Void</span></td><td>4</td><td>60</td><td>15s</td><td>Drags in and damages all creatures nearby</td></tr>
   </table></div>
-  <p class="note">Tier 2–4 spells already appear in your spellbook. You learn them once the matching shrine tier and wand are added in later updates.</p>
+  <h3>Ritual catalysts</h3>
+  <div class="tablewrap card"><table>
+    <tr><th>Spell</th><th>Catalysts (one per Catalyst Crystal)</th></tr>
+    <tr><td>Fireball</td><td>2× Blaze Powder, Magma Cream, Fire Charge</td></tr>
+    <tr><td>Frost Nova</td><td>Packed Ice, 2× Snowball, Blue Ice</td></tr>
+    <tr><td>Blink</td><td>2× Ender Pearl, 2× Chorus Fruit</td></tr>
+    <tr><td>Growth</td><td>2× Bone Meal, Wheat Seeds, Moss Block</td></tr>
+    <tr class="soon"><td>Tier 3–4 spells</td><td>Listed in the spellbook; learnable once those shrine tiers are added</td></tr>
+  </table></div>
 </section>
 
 <section id="items">
   <h2>Items &amp; recipes</h2>
   <div class="tablewrap card"><table>
     <tr><th>Item</th><th>Recipe</th></tr>
-    <tr><td>Arcane Dust</td><td>Mine Arcane Ore, or smelt/blast the ore block</td></tr>
+    <tr><td>Arcane Dust</td><td>Mine Arcane Ore. A silk-touched ore block can be smelted or blasted (1 dust), or crafted (3 dust)</td></tr>
+    <tr><td>Infused Gem</td><td>Amethyst Shard in the centre, Lapis Lazuli on the edges, Arcane Dust in the corners</td></tr>
+    <tr><td>Catalyst Crystal</td><td>Infused Gem in the centre, Amethyst Shards on top, left and right, Arcane Runestone below</td></tr>
+    <tr><td>Adept Wand</td><td>Apprentice Wand in the centre, Infused Gems above it and to its right, Gold Ingot in the top-right corner, Blaze Rod in the bottom-left corner</td></tr>
     <tr><td>Spellbook</td><td>Book + 2 Arcane Dust + Amethyst Shard (shapeless)</td></tr>
     <tr><td>Apprentice Wand</td><td>Stick diagonal, with Arcane Dust either side and an Amethyst Shard at the tip</td></tr>
     <tr><td>Arcane Runestone ×8</td><td>8 Deepslate Bricks around 1 Arcane Dust</td></tr>
     <tr><td>Arcane Pedestal</td><td>3 Polished Deepslate / Runestone in the middle / 3 Polished Deepslate</td></tr>
     <tr><td>Void Crystal Core</td><td>Eye of Ender in the centre, Amethyst Shards on the edges, Arcane Dust in the corners</td></tr>
     <tr><td>Blank Spell Scroll</td><td>Paper + Arcane Dust</td></tr>
-    <tr><td>Spell Scrolls</td><td>Blank Scroll + 2 Arcane Dust + a catalyst: Arrow (Magic Missile), Glowstone Dust (Light Orb), Glistering Melon (Minor Heal). Tier 2 also needs a third dust: Fire Charge (Fireball), Packed Ice (Frost Nova), Ender Pearl (Blink), Bone Block (Growth)</td></tr>
+    <tr><td>Spell Scrolls</td><td>Every spell has its own scroll item. <b>Tier 1:</b> Blank Scroll + 2 Arcane Dust + Arrow (Magic Missile), Glowstone Dust (Light Orb) or Glistering Melon (Minor Heal). <b>Tier 2:</b> Blank Scroll + Arcane Dust + Infused Gem + Fire Charge (Fireball), Packed Ice (Frost Nova), Ender Pearl (Blink) or Bone Block (Growth)</td></tr>
     <tr><td>Mana Crystal</td><td>Lapis Block in the centre, Arcane Dust on the edges, Amethyst Shards in the corners</td></tr>
     <tr><td>Mana Gem</td><td>Emerald surrounded by 4 Arcane Dust (plus shape)</td></tr>
-    <tr><td>Mana Potions</td><td>Brewing: Awkward Potion + Arcane Dust → Minor. Then add Glowstone Dust → Mana Potion. Then add an Amethyst Shard → Greater</td></tr>
+    <tr><td>Mana Potions</td><td><b>Crafting:</b> Glass Bottle + 2 Arcane Dust + Nether Wart → Minor. Minor + Glowstone Dust + Arcane Dust → Mana Potion. Mana Potion + Amethyst Shard + Infused Gem → Greater. <b>Brewing also works:</b> Awkward Potion + Arcane Dust → Minor, then Glowstone Dust, then Amethyst Shard</td></tr>
   </table></div>
+</section>
+
+<section id="compat">
+  <h2>JEI &amp; autocrafting</h2>
+  <div class="card">
+    <p style="margin-top:0">Every Tiered Arcana item is made with a normal crafting-table recipe that has no hidden NBT. So:</p>
+    <ul>
+      <li>JEI shows every recipe, and the <b>+</b> button moves the ingredients into a crafting grid or a pattern encoder.</li>
+      <li>Every item can be encoded into a crafting pattern and autocrafted by <b>Tiered Networks</b> or <b>Tiered Industries</b>.</li>
+      <li>Each spell scroll is its own item (<code>tieredarcana:scroll_fireball</code> and so on), so patterns never mix scrolls up.</li>
+      <li>Forge tags are included for other mods' machines: <code>forge:ores/arcane</code>, <code>forge:dusts/arcane</code>, <code>forge:gems/infused</code>.</li>
+    </ul>
+    <p style="margin-bottom:0;color:var(--muted)">Two things can't be autocrafted: learning a spell and awakening a shrine tier. Both happen at the shrine, by design.</p>
+  </div>
 </section>
 
 <section id="config">

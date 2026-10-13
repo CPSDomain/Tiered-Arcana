@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "tieredarcana:scroll_magic_missile",
+    "tieredarcana:scroll_light_orb",
+    "tieredarcana:scroll_minor_heal",
+    "tieredarcana:scroll_fireball",
+    "tieredarcana:scroll_frost_nova",
+    "tieredarcana:scroll_blink",
+    "tieredarcana:scroll_growth",
+    "tieredarcana:scroll_lightning_strike",
+    "tieredarcana:scroll_void_shield",
+    "tieredarcana:scroll_levitate",
+    "tieredarcana:scroll_meteor",
+    "tieredarcana:scroll_void_rift"
+  ]
+}

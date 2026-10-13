@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:minor_mana_potion"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:mana_potion",
+    "count": 1
+  }
+}

@@ -8,6 +8,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +16,11 @@ public class ArcanePedestalBlockEntity extends BlockEntity {
     private ItemStack item = ItemStack.EMPTY;
 
     public ArcanePedestalBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.PEDESTAL.get(), pos, state);
+        this(ModBlockEntities.PEDESTAL.get(), pos, state);
+    }
+
+    protected ArcanePedestalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     public ItemStack getItem() { return item; }

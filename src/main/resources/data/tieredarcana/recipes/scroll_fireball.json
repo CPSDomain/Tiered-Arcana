@@ -3,26 +3,20 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "tieredarcana:spell_scroll"
+      "item": "tieredarcana:blank_scroll"
     },
     {
       "item": "tieredarcana:arcane_dust"
     },
     {
-      "item": "tieredarcana:arcane_dust"
+      "item": "tieredarcana:infused_gem"
     },
     {
       "item": "minecraft:fire_charge"
-    },
-    {
-      "item": "tieredarcana:arcane_dust"
     }
   ],
   "result": {
-    "item": "tieredarcana:spell_scroll",
-    "count": 1,
-    "nbt": {
-      "Spell": "tieredarcana:fireball"
-    }
+    "item": "tieredarcana:scroll_fireball",
+    "count": 1
   }
 }

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:deepslate_arcane_ore"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:arcane_dust",
+    "count": 3
+  }
+}

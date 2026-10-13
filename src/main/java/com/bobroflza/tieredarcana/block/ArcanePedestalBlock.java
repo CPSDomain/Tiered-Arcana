@@ -33,7 +33,16 @@ public class ArcanePedestalBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
+        return shape();
+    }
+
+    protected VoxelShape shape() {
         return SHAPE;
+    }
+
+    /** Height above the block's base where the held item floats (used by the renderer). */
+    public double itemHeight() {
+        return 1.15;
     }
 
     @Override

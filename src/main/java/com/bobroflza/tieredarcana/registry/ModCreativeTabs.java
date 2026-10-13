@@ -2,9 +2,6 @@ package com.bobroflza.tieredarcana.registry;
 
 import com.bobroflza.tieredarcana.TieredArcana;
 import com.bobroflza.tieredarcana.item.ManaGemItem;
-import com.bobroflza.tieredarcana.item.SpellScrollItem;
-import com.bobroflza.tieredarcana.spell.Spell;
-import com.bobroflza.tieredarcana.spell.SpellRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,11 +18,14 @@ public final class ModCreativeTabs {
             .displayItems((params, out) -> {
                 out.accept(ModItems.SPELLBOOK.get());
                 out.accept(ModItems.APPRENTICE_WAND.get());
+                out.accept(ModItems.ADEPT_WAND.get());
                 out.accept(ModItems.ARCANE_DUST.get());
+                out.accept(ModItems.INFUSED_GEM.get());
                 out.accept(ModItems.ARCANE_ORE.get());
                 out.accept(ModItems.DEEPSLATE_ARCANE_ORE.get());
                 out.accept(ModItems.ARCANE_RUNESTONE.get());
                 out.accept(ModItems.ARCANE_PEDESTAL.get());
+                out.accept(ModItems.CATALYST_CRYSTAL.get());
                 out.accept(ModItems.VOID_CRYSTAL_CORE.get());
                 out.accept(ModItems.MINOR_MANA_POTION.get());
                 out.accept(ModItems.MANA_POTION.get());
@@ -35,9 +35,8 @@ public final class ModCreativeTabs {
                 ItemStack full = new ItemStack(ModItems.MANA_GEM.get());
                 ManaGemItem.setStored(full, ((ManaGemItem) ModItems.MANA_GEM.get()).getCapacity());
                 out.accept(full);
-                for (Spell s : SpellRegistry.all()) {
-                    out.accept(SpellScrollItem.of(ModItems.SPELL_SCROLL.get(), s));
-                }
+                out.accept(ModItems.BLANK_SCROLL.get());
+                ModItems.SCROLLS.values().forEach(scroll -> out.accept(scroll.get()));
             })
             .build());
 

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:mana_potion"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "tieredarcana:infused_gem"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:greater_mana_potion",
+    "count": 1
+  }
+}

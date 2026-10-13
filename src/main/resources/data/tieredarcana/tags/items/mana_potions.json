@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "tieredarcana:minor_mana_potion",
+    "tieredarcana:mana_potion",
+    "tieredarcana:greater_mana_potion"
+  ]
+}

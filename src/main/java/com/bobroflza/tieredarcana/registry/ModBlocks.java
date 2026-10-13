@@ -2,6 +2,7 @@ package com.bobroflza.tieredarcana.registry;
 
 import com.bobroflza.tieredarcana.TieredArcana;
 import com.bobroflza.tieredarcana.block.ArcanePedestalBlock;
+import com.bobroflza.tieredarcana.block.CatalystCrystalBlock;
 import com.bobroflza.tieredarcana.block.LightOrbBlock;
 import com.bobroflza.tieredarcana.block.VoidCrystalCoreBlock;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -30,6 +31,11 @@ public final class ModBlocks {
 
     public static final RegistryObject<Block> ARCANE_PEDESTAL = BLOCKS.register("arcane_pedestal",
             () -> new ArcanePedestalBlock(BlockBehaviour.Properties.copy(Blocks.POLISHED_DEEPSLATE).noOcclusion().lightLevel(s -> 4)));
+
+    public static final RegistryObject<Block> CATALYST_CRYSTAL = BLOCKS.register("catalyst_crystal",
+            () -> new CatalystCrystalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
+                    .strength(1.5f, 6f).sound(SoundType.AMETHYST_CLUSTER).noOcclusion().lightLevel(s -> 9)
+                    .pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> VOID_CRYSTAL_CORE = BLOCKS.register("void_crystal_core",
             () -> new VoidCrystalCoreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)

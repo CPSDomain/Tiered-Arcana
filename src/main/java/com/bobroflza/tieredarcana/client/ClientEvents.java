@@ -22,6 +22,8 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.level.ItemLike;
 
 public final class ClientEvents {
     private ClientEvents() {}
@@ -32,6 +34,7 @@ public final class ClientEvents {
         public static void renderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(ModEntities.MAGIC_MISSILE.get(), NoopRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.PEDESTAL.get(), ArcanePedestalRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.CATALYST.get(), ArcanePedestalRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.CORE.get(), VoidCrystalCoreRenderer::new);
         }
 
@@ -59,7 +62,7 @@ public final class ClientEvents {
                 if (layer != 1) return 0xFFFFFFFF;
                 Spell s = SpellScrollItem.getSpell(stack);
                 return s == null ? 0xFFAAAAAA : 0xFF000000 | s.getSchool().getColor();
-            }, ModItems.SPELL_SCROLL.get());
+            }, ModItems.SCROLLS.values().stream().map(RegistryObject::get).toArray(ItemLike[]::new));
         }
     }
 

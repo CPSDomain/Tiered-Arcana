@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "tieredarcana:spell_scroll"
+      "item": "tieredarcana:blank_scroll"
     },
     {
       "item": "tieredarcana:arcane_dust"
@@ -16,10 +16,7 @@
     }
   ],
   "result": {
-    "item": "tieredarcana:spell_scroll",
-    "count": 1,
-    "nbt": {
-      "Spell": "tieredarcana:minor_heal"
-    }
+    "item": "tieredarcana:scroll_minor_heal",
+    "count": 1
   }
 }

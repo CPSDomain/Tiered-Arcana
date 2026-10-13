@@ -1,10 +1,9 @@
 package com.bobroflza.tieredarcana.item;
 
 import com.bobroflza.tieredarcana.spell.Spell;
-import com.bobroflza.tieredarcana.spell.SpellRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
@@ -14,37 +13,20 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-/** A scroll holding one spell (NBT "Spell"). Learned by placing it on the shrine pedestal. */
+/**
+ * A scroll holding one spell. Each spell has its OWN scroll item (no NBT), so scrolls work cleanly
+ * with JEI's recipe transfer, crafting patterns and autocrafting in other mods.
+ * Learned by placing it on the shrine pedestal and running a ritual.
+ */
 public class SpellScrollItem extends Item {
-    public static final String TAG = "Spell";
+    private final Spell spell;
 
-    public SpellScrollItem(Properties props) {
-        super(props.stacksTo(16));
+    public SpellScrollItem(Properties props, Spell spell) {
+        super(props.stacksTo(16).rarity(rarityFor(spell)));
+        this.spell = spell;
     }
 
-    public static ItemStack of(Item scrollItem, Spell spell) {
-        ItemStack stack = new ItemStack(scrollItem);
-        stack.getOrCreateTag().putString(TAG, spell.getId().toString());
-        return stack;
-    }
-
-    @Nullable
-    public static Spell getSpell(ItemStack stack) {
-        if (!stack.hasTag() || !stack.getTag().contains(TAG)) return null;
-        return SpellRegistry.get(ResourceLocation.tryParse(stack.getTag().getString(TAG)));
-    }
-
-    @Override
-    public Component getName(ItemStack stack) {
-        Spell s = getSpell(stack);
-        if (s == null) return super.getName(stack);
-        return Component.translatable("item.tieredarcana.spell_scroll.named", s.getName());
-    }
-
-    @Override
-    public Rarity getRarity(ItemStack stack) {
-        Spell s = getSpell(stack);
-        if (s == null) return Rarity.COMMON;
+    private static Rarity rarityFor(Spell s) {
         return switch (s.getTier()) {
             case 1 -> Rarity.COMMON;
             case 2 -> Rarity.UNCOMMON;
@@ -53,16 +35,40 @@ public class SpellScrollItem extends Item {
         };
     }
 
+    public Spell getSpell() { return spell; }
+
+    @Nullable
+    public static Spell getSpell(ItemStack stack) {
+        return stack.getItem() instanceof SpellScrollItem scroll ? scroll.spell : null;
+    }
+
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        Spell s = getSpell(stack);
-        if (s == null) {
-            tooltip.add(Component.translatable("tooltip.tieredarcana.scroll.blank").withStyle(ChatFormatting.GRAY));
-            return;
-        }
-        tooltip.add(Component.translatable("tooltip.tieredarcana.scroll.info", s.getSchool().getName(), s.getTier())
+        tooltip.add(Component.translatable("tooltip.tieredarcana.scroll.info", spell.getSchool().getName(), spell.getTier())
                 .withStyle(ChatFormatting.GRAY));
-        tooltip.add(s.getDescription().copy().withStyle(ChatFormatting.DARK_GRAY));
-        tooltip.add(Component.translatable("tooltip.tieredarcana.scroll.learn").withStyle(ChatFormatting.DARK_PURPLE));
+        tooltip.add(spell.getDescription().copy().withStyle(ChatFormatting.DARK_GRAY));
+        if (!spell.getCatalysts().isEmpty()) {
+            tooltip.add(Component.translatable("tooltip.tieredarcana.scroll.catalysts").withStyle(ChatFormatting.LIGHT_PURPLE));
+            tooltip.add(catalystList(spell).withStyle(ChatFormatting.GRAY));
+        }
+        tooltip.add(Component.translatable("tooltip.tieredarcana.scroll.learn", spell.getTier()).withStyle(ChatFormatting.DARK_PURPLE));
+    }
+
+    /** "2× Blaze Powder, Magma Cream, Fire Charge" */
+    public static MutableComponent catalystList(Spell spell) {
+        MutableComponent out = Component.literal(" ");
+        List<Item> cats = spell.getCatalysts();
+        boolean first = true;
+        for (int i = 0; i < cats.size(); i++) {
+            Item item = cats.get(i);
+            if (cats.subList(0, i).contains(item)) continue; // already counted
+            int count = 0;
+            for (Item c : cats) if (c == item) count++;
+            if (!first) out.append(", ");
+            if (count > 1) out.append(count + "× ");
+            out.append(item.getDescription());
+            first = false;
+        }
+        return out;
     }
 }

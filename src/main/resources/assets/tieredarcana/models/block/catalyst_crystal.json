@@ -1,0 +1,282 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "tieredarcana:block/catalyst_crystal",
+    "crystal": "tieredarcana:block/catalyst_crystal"
+  },
+  "elements": [
+    {
+      "from": [
+        6,
+        0,
+        6
+      ],
+      "to": [
+        10,
+        3,
+        10
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            13,
+            10,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            13,
+            10,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            13,
+            10,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            13,
+            10,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ]
+        },
+        "down": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        5,
+        3,
+        5
+      ],
+      "to": [
+        11,
+        8,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            5,
+            8,
+            11,
+            13
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            5,
+            8,
+            11,
+            13
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            5,
+            8,
+            11,
+            13
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            5,
+            8,
+            11,
+            13
+          ]
+        },
+        "up": {
+          "texture": "#crystal",
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ]
+        },
+        "down": {
+          "texture": "#crystal",
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        6,
+        8,
+        6
+      ],
+      "to": [
+        10,
+        11,
+        10
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            5,
+            10,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            5,
+            10,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            5,
+            10,
+            8
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            5,
+            10,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ]
+        },
+        "down": {
+          "texture": "#crystal",
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        7,
+        11,
+        7
+      ],
+      "to": [
+        9,
+        13,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            5
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            5
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            5
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            5
+          ]
+        },
+        "up": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        },
+        "down": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        }
+      }
+    }
+  ]
+}

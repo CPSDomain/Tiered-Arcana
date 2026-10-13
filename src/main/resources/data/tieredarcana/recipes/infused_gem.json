@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DLD",
+    "LAL",
+    "DLD"
+  ],
+  "key": {
+    "D": {
+      "item": "tieredarcana:arcane_dust"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:infused_gem",
+    "count": 1
+  }
+}

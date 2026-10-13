@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "SGS",
+    " R "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "G": {
+      "item": "tieredarcana:infused_gem"
+    },
+    "R": {
+      "item": "tieredarcana:arcane_runestone"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:catalyst_crystal",
+    "count": 1
+  }
+}

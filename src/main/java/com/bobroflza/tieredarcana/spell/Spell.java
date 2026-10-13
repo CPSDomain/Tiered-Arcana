@@ -6,6 +6,9 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
+
+import java.util.List;
 
 public abstract class Spell {
     private final ResourceLocation id;
@@ -13,6 +16,7 @@ public abstract class Spell {
     private final int tier;
     private final int manaCost;
     private final int cooldownTicks;
+    private List<Item> catalysts = List.of();
 
     protected Spell(ResourceLocation id, School school, int tier, int manaCost, int cooldownTicks) {
         this.id = id;
@@ -35,6 +39,14 @@ public abstract class Spell {
     public int getTier() { return tier; }
     public int getManaCost() { return manaCost; }
     public int getCooldownTicks() { return cooldownTicks; }
+
+    /** Items that must sit on the shrine's Catalyst Crystals (one each, any order) for the learning ritual. */
+    public List<Item> getCatalysts() { return catalysts; }
+
+    public Spell catalysts(Item... items) {
+        this.catalysts = List.of(items);
+        return this;
+    }
 
     public MutableComponent getName() {
         return Component.translatable("spell." + id.getNamespace() + "." + id.getPath())

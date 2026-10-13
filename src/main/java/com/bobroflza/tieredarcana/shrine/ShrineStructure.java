@@ -2,13 +2,16 @@ package com.bobroflza.tieredarcana.shrine;
 
 import com.bobroflza.tieredarcana.TieredArcana;
 import com.bobroflza.tieredarcana.registry.ModBlocks;
+import com.bobroflza.tieredarcana.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,24 +22,34 @@ import java.util.function.Supplier;
 /**
  * The Void Crystal Shrine multiblock, defined tier by tier.
  * All offsets are relative to the Void Crystal Core block (the floating crystal).
- * A shrine is tier N when tiers 1..N are all complete. Each tier only lists the blocks it ADDS,
- * so the shrine physically grows outward/upward as you upgrade it.
+ * Each tier only lists the blocks it ADDS, so the shrine grows outward/upward as you upgrade it.
  *
  * <pre>
- * Tier 1 – Arcane Circle (side view)          Tier 1 floor (top view, y = -3)
+ * Floor (y = -3), top view. Tier 1 is the inner 5x5, Tier 2 adds the outer two rings.
  *
- *   y= 0        ◆   Void Crystal Core           B B R B B
- *   y=-1        .   (air gap)                   B B R B B
- *   y=-2        P   Arcane Pedestal             R R R R R      R = Arcane Runestone
- *   y=-3    B B R B B   floor                   B B R B B      B = shrine base (deepslate bricks etc.)
- *                                               B B R B B
+ *   R R R R R R R R R        R = Arcane Runestone
+ *   R B B B B B B B R        B = shrine base (deepslate bricks etc.)
+ *   R B b b r b b B R        b/r = Tier 1 floor
+ *   R B b b r b b B R        P = Catalyst Pylon column on top of this base block:
+ *   R B r r r r r B R              y=-2 Runestone, y=-1 Runestone, y=0 Catalyst Crystal
+ *   R B b b r b b B R
+ *   R B b b r b b B R        Pedestal at (0,-2,0), air gap at (0,-1,0), Core at (0,0,0).
+ *   R B B B B B B B R        Pylons stand on the four inner corners of the B ring: (±3, ±3).
+ *   R R R R R R R R R
  * </pre>
+ *
+ * A tier is <b>built</b> when its blocks are all present, and <b>awakened</b> when its key offering has been
+ * placed on the pedestal and the crystal activated. Tier 1 needs no offering.
  */
 public final class ShrineStructure {
     public static final TagKey<Block> SHRINE_BASE = TagKey.create(Registries.BLOCK, TieredArcana.id("shrine_base"));
-    public static final int MAX_TIER = 1; // Tiers 2-4 (Pylons, Obelisks, Ascended) are added in later updates
+    public static final int MAX_TIER = 2; // Tiers 3-4 (Obelisks, Ascended) come in later updates
 
     public static final BlockPos PEDESTAL_OFFSET = new BlockPos(0, -2, 0);
+
+    /** Catalyst Crystals (Tier 2+): ingredients for advanced rituals are placed on these. */
+    public static final List<BlockPos> CATALYST_OFFSETS = List.of(
+            new BlockPos(-3, 0, -3), new BlockPos(3, 0, -3), new BlockPos(3, 0, 3), new BlockPos(-3, 0, 3));
 
     /** One required block: where, what's accepted, and what to show as a ghost preview. */
     public record Entry(BlockPos offset, Predicate<BlockState> test, Supplier<BlockState> display, boolean rune) {
@@ -52,13 +65,29 @@ public final class ShrineStructure {
         List<Entry> t1 = new ArrayList<>();
         for (int x = -2; x <= 2; x++) {
             for (int z = -2; z <= 2; z++) {
-                boolean cross = x == 0 || z == 0;
-                t1.add(cross ? runestone(x, -3, z) : base(x, -3, z));
+                t1.add(x == 0 || z == 0 ? runestone(x, -3, z) : base(x, -3, z));
             }
         }
         t1.add(new Entry(PEDESTAL_OFFSET, s -> s.is(ModBlocks.ARCANE_PEDESTAL.get()),
                 () -> ModBlocks.ARCANE_PEDESTAL.get().defaultBlockState(), false));
         TIERS.add(Collections.unmodifiableList(t1));
+
+        // ---------------- Tier 2: Pylons ----------------
+        List<Entry> t2 = new ArrayList<>();
+        for (int x = -4; x <= 4; x++) {
+            for (int z = -4; z <= 4; z++) {
+                int ring = Math.max(Math.abs(x), Math.abs(z));
+                if (ring == 4) t2.add(runestone(x, -3, z));
+                else if (ring == 3) t2.add(base(x, -3, z));
+            }
+        }
+        for (BlockPos c : CATALYST_OFFSETS) {
+            t2.add(runestone(c.getX(), -2, c.getZ()));
+            t2.add(runestone(c.getX(), -1, c.getZ()));
+            t2.add(new Entry(c, s -> s.is(ModBlocks.CATALYST_CRYSTAL.get()),
+                    () -> ModBlocks.CATALYST_CRYSTAL.get().defaultBlockState(), false));
+        }
+        TIERS.add(Collections.unmodifiableList(t2));
     }
 
     private static Entry runestone(int x, int y, int z) {
@@ -79,7 +108,7 @@ public final class ShrineStructure {
         return TIERS.get(tier - 1);
     }
 
-    /** Highest fully built tier, 0 if even tier 1 is incomplete. */
+    /** Highest fully BUILT tier, 0 if even tier 1 is incomplete. */
     public static int computeTier(BlockGetter level, BlockPos core) {
         int tier = 0;
         for (List<Entry> entries : TIERS) {
@@ -97,6 +126,15 @@ public final class ShrineStructure {
         return missing;
     }
 
+    /** The item that must be offered on the pedestal to awaken a built tier; null = no offering needed. */
+    @Nullable
+    public static Item keyOffering(int tier) {
+        return switch (tier) {
+            case 2 -> ModItems.INFUSED_GEM.get();
+            default -> null;
+        };
+    }
+
     /** Runestones of all built tiers, in build order – lit up one by one during a ritual. */
     public static List<BlockPos> runes(BlockPos core, int upToTier) {
         List<BlockPos> list = new ArrayList<>();
@@ -106,7 +144,7 @@ public final class ShrineStructure {
         return list;
     }
 
-    /** Half-width of the rune circle players stand in for the regen boost and to receive a ritual. */
+    /** Half-width of the rune circle players stand in for the regen boost. */
     public static int circleRadius(int tier) {
         return tier <= 1 ? 2 : 4;
     }

@@ -3,14 +3,20 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:paper"
+      "item": "minecraft:glass_bottle"
     },
     {
       "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "minecraft:nether_wart"
     }
   ],
   "result": {
-    "item": "tieredarcana:spell_scroll",
+    "item": "tieredarcana:minor_mana_potion",
     "count": 1
   }
 }

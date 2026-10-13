@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " GI",
+    " WG",
+    "B  "
+  ],
+  "key": {
+    "G": {
+      "item": "tieredarcana:infused_gem"
+    },
+    "I": {
+      "item": "minecraft:gold_ingot"
+    },
+    "W": {
+      "item": "tieredarcana:apprentice_wand"
+    },
+    "B": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:adept_wand",
+    "count": 1
+  }
+}

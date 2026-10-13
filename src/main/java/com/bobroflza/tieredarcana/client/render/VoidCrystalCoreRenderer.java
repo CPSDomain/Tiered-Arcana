@@ -18,6 +18,9 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.model.data.ModelData;
 
@@ -63,10 +66,27 @@ public class VoidCrystalCoreRenderer implements BlockEntityRenderer<VoidCrystalC
         if (player == null || ritual) return;
         boolean wand = player.getMainHandItem().getItem() instanceof WandItem || player.getOffhandItem().getItem() instanceof WandItem;
         if (!wand || player.distanceToSqr(be.getBlockPos().getCenter()) > 24 * 24) return;
-        int next = tier + 1;
+        BlockPos core = be.getBlockPos();
+
+        // built but not yet awakened: show the key offering hovering over the pedestal
+        if (be.isAwaitingOffering()) {
+            Item offering = ShrineStructure.keyOffering(be.getBuiltTier() > tier ? tier + 1 : 0);
+            if (offering != null) {
+                BlockPos o = ShrineStructure.PEDESTAL_OFFSET;
+                pose.pushPose();
+                pose.translate(o.getX() + 0.5, o.getY() + 1.35 + Math.sin(time / 8.0) * 0.06, o.getZ() + 0.5);
+                pose.mulPose(Axis.YP.rotationDegrees(time * 3f));
+                pose.scale(0.5f, 0.5f, 0.5f);
+                Minecraft.getInstance().getItemRenderer().renderStatic(new ItemStack(offering), ItemDisplayContext.FIXED,
+                        LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, pose, buffers, level, 0);
+                pose.popPose();
+            }
+            return;
+        }
+
+        int next = be.getBuiltTier() + 1;
         if (next > ShrineStructure.MAX_TIER) return;
 
-        BlockPos core = be.getBlockPos();
         float pulse = 0.45f + 0.05f * (float) Math.sin(time / 6.0);
         for (ShrineStructure.Entry e : ShrineStructure.entries(next)) {
             if (e.matches(level, core)) continue;
