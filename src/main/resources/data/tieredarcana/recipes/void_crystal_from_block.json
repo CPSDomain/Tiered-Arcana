@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:void_crystal_block"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:void_crystal",
+    "count": 4
+  }
+}

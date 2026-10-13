@@ -37,6 +37,10 @@ public final class ModBlocks {
                     .strength(1.5f, 6f).sound(SoundType.AMETHYST_CLUSTER).noOcclusion().lightLevel(s -> 9)
                     .pushReaction(PushReaction.DESTROY)));
 
+    public static final RegistryObject<Block> VOID_CRYSTAL_BLOCK = BLOCKS.register("void_crystal_block",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
+                    .strength(3f, 9f).sound(SoundType.AMETHYST).lightLevel(s -> 7).requiresCorrectToolForDrops()));
+
     public static final RegistryObject<Block> VOID_CRYSTAL_CORE = BLOCKS.register("void_crystal_core",
             () -> new VoidCrystalCoreBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK)
                     .strength(3f, 1200f).sound(SoundType.AMETHYST).noOcclusion().lightLevel(s -> 15)

@@ -19,13 +19,16 @@ public final class ModCreativeTabs {
                 out.accept(ModItems.SPELLBOOK.get());
                 out.accept(ModItems.APPRENTICE_WAND.get());
                 out.accept(ModItems.ADEPT_WAND.get());
+                out.accept(ModItems.ARCHMAGE_WAND.get());
                 out.accept(ModItems.ARCANE_DUST.get());
                 out.accept(ModItems.INFUSED_GEM.get());
+                out.accept(ModItems.VOID_CRYSTAL.get());
                 out.accept(ModItems.ARCANE_ORE.get());
                 out.accept(ModItems.DEEPSLATE_ARCANE_ORE.get());
                 out.accept(ModItems.ARCANE_RUNESTONE.get());
                 out.accept(ModItems.ARCANE_PEDESTAL.get());
                 out.accept(ModItems.CATALYST_CRYSTAL.get());
+                out.accept(ModItems.VOID_CRYSTAL_BLOCK.get());
                 out.accept(ModItems.VOID_CRYSTAL_CORE.get());
                 out.accept(ModItems.MINOR_MANA_POTION.get());
                 out.accept(ModItems.MANA_POTION.get());

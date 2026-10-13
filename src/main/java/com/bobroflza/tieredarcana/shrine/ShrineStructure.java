@@ -43,13 +43,16 @@ import java.util.function.Supplier;
  */
 public final class ShrineStructure {
     public static final TagKey<Block> SHRINE_BASE = TagKey.create(Registries.BLOCK, TieredArcana.id("shrine_base"));
-    public static final int MAX_TIER = 2; // Tiers 3-4 (Obelisks, Ascended) come in later updates
+    public static final int MAX_TIER = 3; // Tier 4 (Ascended) comes in a later update
 
     public static final BlockPos PEDESTAL_OFFSET = new BlockPos(0, -2, 0);
 
     /** Catalyst Crystals (Tier 2+): ingredients for advanced rituals are placed on these. */
     public static final List<BlockPos> CATALYST_OFFSETS = List.of(
             new BlockPos(-3, 0, -3), new BlockPos(3, 0, -3), new BlockPos(3, 0, 3), new BlockPos(-3, 0, 3));
+
+    /** The Void Crystal caps on top of the two Tier 3 obelisks – beams of energy flow from here to the core. */
+    public static final List<BlockPos> OBELISK_TOPS = List.of(new BlockPos(-4, 4, 0), new BlockPos(4, 4, 0));
 
     /** One required block: where, what's accepted, and what to show as a ghost preview. */
     public record Entry(BlockPos offset, Predicate<BlockState> test, Supplier<BlockState> display, boolean rune) {
@@ -88,6 +91,35 @@ public final class ShrineStructure {
                     () -> ModBlocks.CATALYST_CRYSTAL.get().defaultBlockState(), false));
         }
         TIERS.add(Collections.unmodifiableList(t2));
+
+        // ---------------- Tier 3: Obelisks ----------------
+        // Two towers standing on the outer rune border, east and west of the core (x = ±4, z = -1..1).
+        //   y=4        V            V = Void Crystal Block
+        //   y=3        R            R = Arcane Runestone
+        //   y=2        B            B = shrine base
+        //   y=1      B V B
+        //   y=0      B R B          (level with the core)
+        //   y=-1     B B B
+        //   y=-2     B B B          (standing on the Tier 2 rune border)
+        List<Entry> t3 = new ArrayList<>();
+        for (int x : new int[]{-4, 4}) {
+            for (int y = -2; y <= 1; y++) {
+                for (int z = -1; z <= 1; z++) {
+                    if (z == 0 && y == 0) t3.add(runestone(x, y, z));
+                    else if (z == 0 && y == 1) t3.add(voidBlock(x, y, z));
+                    else t3.add(base(x, y, z));
+                }
+            }
+            t3.add(base(x, 2, 0));
+            t3.add(runestone(x, 3, 0));
+            t3.add(voidBlock(x, 4, 0));
+        }
+        TIERS.add(Collections.unmodifiableList(t3));
+    }
+
+    private static Entry voidBlock(int x, int y, int z) {
+        return new Entry(new BlockPos(x, y, z), s -> s.is(ModBlocks.VOID_CRYSTAL_BLOCK.get()),
+                () -> ModBlocks.VOID_CRYSTAL_BLOCK.get().defaultBlockState(), false);
     }
 
     private static Entry runestone(int x, int y, int z) {
@@ -131,6 +163,7 @@ public final class ShrineStructure {
     public static Item keyOffering(int tier) {
         return switch (tier) {
             case 2 -> ModItems.INFUSED_GEM.get();
+            case 3 -> ModItems.VOID_CRYSTAL.get();
             default -> null;
         };
     }

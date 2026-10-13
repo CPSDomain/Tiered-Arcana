@@ -26,6 +26,8 @@ public final class ModItems {
     public static final RegistryObject<Item> ARCANE_DUST = ITEMS.register("arcane_dust", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> INFUSED_GEM = ITEMS.register("infused_gem",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> VOID_CRYSTAL = ITEMS.register("void_crystal",
+            () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
 
     // ---- magic gear ----
     public static final RegistryObject<Item> SPELLBOOK = ITEMS.register("spellbook",
@@ -36,6 +38,9 @@ public final class ModItems {
     /** Tier 2 wand: Tier 2 spells, -10% mana cost, 125% power. */
     public static final RegistryObject<Item> ADEPT_WAND = ITEMS.register("adept_wand",
             () -> new WandItem(new Item.Properties().rarity(Rarity.UNCOMMON), 2, 2, 0.9f, 1.25f));
+    /** Tier 3 wand: Tier 3 spells, -20% mana cost, 150% power. */
+    public static final RegistryObject<Item> ARCHMAGE_WAND = ITEMS.register("archmage_wand",
+            () -> new WandItem(new Item.Properties().rarity(Rarity.RARE), 3, 3, 0.8f, 1.5f));
 
     // ---- scrolls (one item per spell) ----
     public static final RegistryObject<Item> BLANK_SCROLL = ITEMS.register("blank_scroll", () -> new Item(new Item.Properties()));
@@ -66,6 +71,7 @@ public final class ModItems {
     public static final RegistryObject<Item> ARCANE_RUNESTONE = block("arcane_runestone", ModBlocks.ARCANE_RUNESTONE);
     public static final RegistryObject<Item> ARCANE_PEDESTAL = block("arcane_pedestal", ModBlocks.ARCANE_PEDESTAL);
     public static final RegistryObject<Item> CATALYST_CRYSTAL = block("catalyst_crystal", ModBlocks.CATALYST_CRYSTAL);
+    public static final RegistryObject<Item> VOID_CRYSTAL_BLOCK = block("void_crystal_block", ModBlocks.VOID_CRYSTAL_BLOCK);
     public static final RegistryObject<Item> VOID_CRYSTAL_CORE = ITEMS.register("void_crystal_core",
             () -> new BlockItem(ModBlocks.VOID_CRYSTAL_CORE.get(), new Item.Properties().rarity(Rarity.RARE)));
 

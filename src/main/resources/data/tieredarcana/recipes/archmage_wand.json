@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " VD",
+    " WV",
+    "E  "
+  ],
+  "key": {
+    "V": {
+      "item": "tieredarcana:void_crystal"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "W": {
+      "item": "tieredarcana:adept_wand"
+    },
+    "E": {
+      "item": "minecraft:end_rod"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:archmage_wand",
+    "count": 1
+  }
+}

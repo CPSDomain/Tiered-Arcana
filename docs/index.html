@@ -54,7 +54,7 @@
 <header>
   <h1>Tiered Arcana</h1>
   <p>Build the Void Crystal Shrine and grow it tier by tier. Learn spells into your spellbook and cast them with a wand, fuelled by mana.</p>
-  <span class="ver">v0.2.0 · Forge 1.20.1 · by BobRoflza</span>
+  <span class="ver">v0.3.0 · Forge 1.20.1 · by BobRoflza</span>
 </header>
 <nav>
   <a href="#start">Getting started</a><a href="#shrine">The Shrine</a><a href="#ritual">Rituals</a>
@@ -133,12 +133,37 @@ B   floor (base block)</div>
     <li>Put an <b>Infused Gem</b> on the pedestal and right-click the crystal. The gem is consumed and the shrine <b>awakens to Tier 2</b>. The crystal grows and the regen circle widens to the full 9×9 floor.</li>
   </ol>
 
+  <h3>Tier 3 – Obelisks</h3>
+  <div class="grid">
+    <div class="card">
+      <b>Each obelisk (side view, ×2)</b>
+      <div class="side">    V        V = Block of Void Crystal
+    R        R = Arcane Runestone
+    B        B = shrine base
+  B V B
+  B R B      ← level with the crystal
+  B B B
+  B B B      ← stands on the rune border
+──R R R──    Tier 2 border</div>
+    </div>
+    <div class="card">
+      <b>Where they go</b>
+      <p style="margin:6px 0">The two obelisks stand on the outer rune border, one on each side of the crystal (east and west). Each one is 3 blocks wide, centred on the border's middle block, and faces in towards the crystal.</p>
+      <p style="margin:6px 0 0;color:var(--muted);font-size:.9rem">Per obelisk: 11 base blocks, 2 runestones, 2 Blocks of Void Crystal. That's 8 Void Crystals per obelisk. Hold a wand to see the ghost blocks.</p>
+    </div>
+  </div>
+  <ol class="card">
+    <li>Build both obelisks. When they're done you get <b>"Tier 3 is built!"</b> and a Void Crystal floats over the pedestal.</li>
+    <li>Put a <b>Void Crystal</b> on the pedestal and right-click the crystal to awaken Tier 3.</li>
+    <li>Pink energy beams start flowing from the tops of the obelisks into the crystal. The crystal grows again, Mana Gems charge 3× as fast, and you can absorb up to 9 Mana Crystals.</li>
+  </ol>
+
   <h3>All tiers</h3>
   <div class="tablewrap card"><table>
     <tr><th>Tier</th><th>Adds</th><th>Unlocks</th></tr>
     <tr><td>1 · Arcane Circle</td><td>5×5 floor, rune cross, pedestal, core</td><td>Tier 1 spells, Mana Crystals (3), gem charging</td></tr>
     <tr><td>2 · Pylons</td><td>9×9 floor, cyan rune square, 4 corner Catalyst Pylons with crystal tips</td><td>Tier 2 spells, catalyst rituals, 6 Mana Crystals, faster gem charging. Key offering: Infused Gem</td></tr>
-    <tr class="soon"><td>3 · Obelisks</td><td>Two tall towers with runestones and Void Crystal accents, beam pillar</td><td>Tier 3 spells, Archmage Wand</td></tr>
+    <tr><td>3 · Obelisks</td><td>Two 7-tall obelisks on the east and west border, with runestones and Void Crystal blocks</td><td>Tier 3 spells, Archmage Wand, 9 Mana Crystals, obelisk beams. Key offering: Void Crystal</td></tr>
     <tr class="soon"><td>4 · Ascended</td><td>Stepped octagonal base, spire crystals, outer rune ring</td><td>Tier 4 spells, Astral Wand</td></tr>
   </table></div>
 </section>
@@ -165,7 +190,7 @@ B   floor (base block)</div>
         <tr><th>Wand</th><th>Max spell</th><th>Cost</th><th>Power</th></tr>
         <tr><td>Apprentice</td><td>Tier 1</td><td>100%</td><td>100%</td></tr>
         <tr><td>Adept</td><td>Tier 2</td><td>90%</td><td>125%</td></tr>
-        <tr class="soon"><td>Archmage</td><td>Tier 3</td><td>80%</td><td>150%</td></tr>
+        <tr><td>Archmage</td><td>Tier 3</td><td>80%</td><td>150%</td></tr>
         <tr class="soon"><td>Astral</td><td>Tier 4</td><td>70%</td><td>200%</td></tr>
       </table></div>
     </div>
@@ -211,7 +236,10 @@ B   floor (base block)</div>
     <tr><td>Frost Nova</td><td>Packed Ice, 2× Snowball, Blue Ice</td></tr>
     <tr><td>Blink</td><td>2× Ender Pearl, 2× Chorus Fruit</td></tr>
     <tr><td>Growth</td><td>2× Bone Meal, Wheat Seeds, Moss Block</td></tr>
-    <tr class="soon"><td>Tier 3–4 spells</td><td>Listed in the spellbook; learnable once those shrine tiers are added</td></tr>
+    <tr><td>Lightning Strike</td><td>Lightning Rod, Copper Block, 2× Glowstone</td></tr>
+    <tr><td>Void Shield</td><td>Shield, Obsidian, 2× Eye of Ender</td></tr>
+    <tr><td>Levitate</td><td>2× Phantom Membrane, 2× Feather</td></tr>
+    <tr class="soon"><td>Tier 4 spells</td><td>Listed in the spellbook. You can learn them once Tier 4 is added</td></tr>
   </table></div>
 </section>
 
@@ -221,6 +249,9 @@ B   floor (base block)</div>
     <tr><th>Item</th><th>Recipe</th></tr>
     <tr><td>Arcane Dust</td><td>Mine Arcane Ore. A silk-touched ore block can be smelted or blasted (1 dust), or crafted (3 dust)</td></tr>
     <tr><td>Infused Gem</td><td>Amethyst Shard in the centre, Lapis Lazuli on the edges, Arcane Dust in the corners</td></tr>
+    <tr><td>Void Crystal</td><td>Ender Pearl + Infused Gem + Popped Chorus Fruit makes 2 (shapeless). Or Echo Shard + Infused Gem makes 4</td></tr>
+    <tr><td>Block of Void Crystal</td><td>4 Void Crystals in a 2×2. It crafts back into 4 crystals</td></tr>
+    <tr><td>Archmage Wand</td><td>Adept Wand in the centre, Void Crystals above it and to its right, Diamond in the top-right corner, End Rod in the bottom-left corner</td></tr>
     <tr><td>Catalyst Crystal</td><td>Infused Gem in the centre, Amethyst Shards on top, left and right, Arcane Runestone below</td></tr>
     <tr><td>Adept Wand</td><td>Apprentice Wand in the centre, Infused Gems above it and to its right, Gold Ingot in the top-right corner, Blaze Rod in the bottom-left corner</td></tr>
     <tr><td>Spellbook</td><td>Book + 2 Arcane Dust + Amethyst Shard (shapeless)</td></tr>
@@ -229,7 +260,7 @@ B   floor (base block)</div>
     <tr><td>Arcane Pedestal</td><td>3 Polished Deepslate / Runestone in the middle / 3 Polished Deepslate</td></tr>
     <tr><td>Void Crystal Core</td><td>Eye of Ender in the centre, Amethyst Shards on the edges, Arcane Dust in the corners</td></tr>
     <tr><td>Blank Spell Scroll</td><td>Paper + Arcane Dust</td></tr>
-    <tr><td>Spell Scrolls</td><td>Every spell has its own scroll item. <b>Tier 1:</b> Blank Scroll + 2 Arcane Dust + Arrow (Magic Missile), Glowstone Dust (Light Orb) or Glistering Melon (Minor Heal). <b>Tier 2:</b> Blank Scroll + Arcane Dust + Infused Gem + Fire Charge (Fireball), Packed Ice (Frost Nova), Ender Pearl (Blink) or Bone Block (Growth)</td></tr>
+    <tr><td>Spell Scrolls</td><td>Every spell has its own scroll item. <b>Tier 1:</b> Blank Scroll + 2 Arcane Dust + Arrow (Magic Missile), Glowstone Dust (Light Orb) or Glistering Melon (Minor Heal). <b>Tier 2:</b> Blank Scroll + Arcane Dust + Infused Gem + Fire Charge (Fireball), Packed Ice (Frost Nova), Ender Pearl (Blink) or Bone Block (Growth). <b>Tier 3:</b> Blank Scroll + Void Crystal + Infused Gem + Lightning Rod (Lightning Strike), Shield (Void Shield) or Phantom Membrane (Levitate)</td></tr>
     <tr><td>Mana Crystal</td><td>Lapis Block in the centre, Arcane Dust on the edges, Amethyst Shards in the corners</td></tr>
     <tr><td>Mana Gem</td><td>Emerald surrounded by 4 Arcane Dust (plus shape)</td></tr>
     <tr><td>Mana Potions</td><td><b>Crafting:</b> Glass Bottle + 2 Arcane Dust + Nether Wart → Minor. Minor + Glowstone Dust + Arcane Dust → Mana Potion. Mana Potion + Amethyst Shard + Infused Gem → Greater. <b>Brewing also works:</b> Awkward Potion + Arcane Dust → Minor, then Glowstone Dust, then Amethyst Shard</td></tr>
@@ -244,7 +275,7 @@ B   floor (base block)</div>
       <li>JEI shows every recipe, and the <b>+</b> button moves the ingredients into a crafting grid or a pattern encoder.</li>
       <li>Every item can be encoded into a crafting pattern and autocrafted by <b>Tiered Networks</b> or <b>Tiered Industries</b>.</li>
       <li>Each spell scroll is its own item (<code>tieredarcana:scroll_fireball</code> and so on), so patterns never mix scrolls up.</li>
-      <li>Forge tags are included for other mods' machines: <code>forge:ores/arcane</code>, <code>forge:dusts/arcane</code>, <code>forge:gems/infused</code>.</li>
+      <li>Forge tags are included for other mods' machines: <code>forge:ores/arcane</code>, <code>forge:dusts/arcane</code>, <code>forge:gems/infused</code>, <code>forge:gems/void</code>, <code>forge:storage_blocks/void_crystal</code>.</li>
     </ul>
     <p style="margin-bottom:0;color:var(--muted)">Two things can't be autocrafted: learning a spell and awakening a shrine tier. Both happen at the shrine, by design.</p>
   </div>

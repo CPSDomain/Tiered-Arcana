@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "VV",
+    "VV"
+  ],
+  "key": {
+    "V": {
+      "item": "tieredarcana:void_crystal"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:void_crystal_block",
+    "count": 1
+  }
+}

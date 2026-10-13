@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:blank_scroll"
+    },
+    {
+      "item": "tieredarcana:void_crystal"
+    },
+    {
+      "item": "tieredarcana:infused_gem"
+    },
+    {
+      "item": "minecraft:shield"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:scroll_void_shield",
+    "count": 1
+  }
+}

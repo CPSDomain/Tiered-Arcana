@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "tieredarcana:infused_gem"
+    "tieredarcana:infused_gem",
+    "tieredarcana:void_crystal"
   ]
 }
