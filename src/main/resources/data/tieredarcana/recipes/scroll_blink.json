@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:spell_scroll"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "minecraft:ender_pearl"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:spell_scroll",
+    "count": 1,
+    "nbt": {
+      "Spell": "tieredarcana:blink"
+    }
+  }
+}

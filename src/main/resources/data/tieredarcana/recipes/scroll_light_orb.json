@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "tieredarcana:spell_scroll"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:spell_scroll",
+    "count": 1,
+    "nbt": {
+      "Spell": "tieredarcana:light_orb"
+    }
+  }
+}

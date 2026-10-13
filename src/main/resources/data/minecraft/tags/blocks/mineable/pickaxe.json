@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "tieredarcana:arcane_ore",
+    "tieredarcana:deepslate_arcane_ore",
+    "tieredarcana:arcane_runestone",
+    "tieredarcana:arcane_pedestal",
+    "tieredarcana:void_crystal_core"
+  ]
+}

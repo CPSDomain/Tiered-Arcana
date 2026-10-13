@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PPP",
+    " R ",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:polished_deepslate"
+    },
+    "R": {
+      "item": "tieredarcana:arcane_runestone"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:arcane_pedestal",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BBB",
+    "BDB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:deepslate_bricks"
+    },
+    "D": {
+      "item": "tieredarcana:arcane_dust"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:arcane_runestone",
+    "count": 8
+  }
+}

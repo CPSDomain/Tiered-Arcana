@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "tieredarcana:block/deepslate_arcane_ore"
+  }
+}

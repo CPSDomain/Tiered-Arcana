@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DSD",
+    "SES",
+    "DSD"
+  ],
+  "key": {
+    "D": {
+      "item": "tieredarcana:arcane_dust"
+    },
+    "S": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:void_crystal_core",
+    "count": 1
+  }
+}

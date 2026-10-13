@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "tieredarcana:arcane_dust"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "result": {
+    "item": "tieredarcana:spellbook",
+    "count": 1
+  }
+}

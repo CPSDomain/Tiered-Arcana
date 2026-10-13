@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tieredarcana:block/arcane_ore"
+    }
+  }
+}

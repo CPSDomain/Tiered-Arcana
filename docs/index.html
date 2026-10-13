@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiered Arcana Guide</title>
+<style>
+  :root {
+    --bg: #120a1e; --panel: #1d1330; --panel2: #2b1b40; --line: #3a2556;
+    --text: #e6dcf5; --muted: #9c86c0; --cyan: #5ff5ec; --pink: #ff8af0; --violet: #c77dff; --gold: #f2c94c;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body { margin: 0; background: radial-gradient(ellipse at top, #24133d 0%, var(--bg) 60%) fixed; color: var(--text);
+         font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { padding: 56px 16px 32px; text-align: center; }
+  header h1 { margin: 0; font-size: clamp(2rem, 6vw, 3.4rem); letter-spacing: .04em;
+              background: linear-gradient(90deg, var(--cyan), var(--violet), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  header p { color: var(--muted); margin: 8px auto 0; max-width: 640px; }
+  .ver { display: inline-block; margin-top: 14px; padding: 2px 10px; border: 1px solid var(--line); border-radius: 99px; color: var(--muted); font-size: .85rem; }
+  nav { position: sticky; top: 0; z-index: 2; background: rgba(18,10,30,.9); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line);
+        display: flex; gap: 4px; overflow-x: auto; padding: 8px 16px; }
+  nav a { color: var(--muted); text-decoration: none; padding: 4px 10px; border-radius: 6px; white-space: nowrap; font-size: .92rem; }
+  nav a:hover { color: var(--text); background: var(--panel2); }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+  section { margin-top: 48px; }
+  h2 { font-size: 1.6rem; margin: 0 0 12px; color: #fff; border-left: 4px solid var(--violet); padding-left: 12px; }
+  h3 { margin: 24px 0 8px; color: var(--cyan); font-size: 1.1rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .05em; }
+  .tablewrap { overflow-x: auto; }
+  table.compact th, table.compact td { padding: 6px 5px; }
+  code, kbd { background: var(--panel2); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; font-size: .9em; }
+  .pill { display: inline-block; padding: 0 8px; border-radius: 99px; font-size: .8rem; font-weight: 600; }
+  .fire { background: #4a1e10; color: #ff9a5c; } .frost { background: #12384a; color: #9fe9ff; }
+  .arcane { background: #33204d; color: #d6a8ff; } .nature { background: #1d3a18; color: #9be38c; } .void { background: #26164a; color: #b691ff; }
+  .soon { opacity: .55; }
+  .shrine { display: grid; grid-template-columns: repeat(5, 36px); gap: 3px; margin: 8px 0; }
+  .shrine div { width: 36px; height: 36px; border-radius: 4px; display: grid; place-items: center; font-size: .75rem; font-weight: 700; }
+  .B { background: #43434c; color: #888; } .R { background: #164b4c; color: var(--cyan); box-shadow: inset 0 0 0 2px var(--cyan); }
+  .Pd { background: #3a2556; color: var(--violet); box-shadow: inset 0 0 0 2px var(--violet); }
+  .side { font-family: ui-monospace, Consolas, monospace; white-space: pre; line-height: 1.35; background: var(--panel2); padding: 12px; border-radius: 8px; overflow-x: auto; }
+  .note { border-left: 3px solid var(--gold); padding: 8px 12px; background: rgba(242,201,76,.06); border-radius: 0 6px 6px 0; }
+  ol li, ul li { margin: 4px 0; }
+  ol.card { padding-left: 40px; }
+  .legend span { margin-right: 14px; white-space: nowrap; }
+  .sw { display: inline-block; width: 12px; height: 12px; border-radius: 2px; vertical-align: -1px; margin-right: 4px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Tiered Arcana</h1>
+  <p>Build the Void Crystal Shrine and grow it tier by tier. Learn spells into your spellbook and cast them with a wand, fuelled by mana.</p>
+  <span class="ver">v0.1.0 · Forge 1.20.1 · by BobRoflza</span>
+</header>
+<nav>
+  <a href="#start">Getting started</a><a href="#shrine">The Shrine</a><a href="#ritual">Rituals</a>
+  <a href="#casting">Casting</a><a href="#mana">Mana</a><a href="#spells">Spells</a><a href="#items">Items &amp; recipes</a><a href="#config">Config</a>
+</nav>
+<main>
+
+<section id="start">
+  <h2>Getting started</h2>
+  <ol class="card">
+    <li>Mine <b>Arcane Ore</b>, found in stone and deepslate between Y −48 and 48. It drops <b>Arcane Dust</b>, which is affected by Fortune.</li>
+    <li>Craft a <b>Spellbook</b> and an <b>Apprentice Wand</b>.</li>
+    <li>Build a <b>Tier 1 shrine</b> (see below) and craft a few <b>Spell Scrolls</b>.</li>
+    <li>Put a scroll on the pedestal and right-click the floating crystal to run the ritual. The spell is written into your book.</li>
+    <li>Open the book, click the spell to make it active, then right-click with your wand to cast.</li>
+  </ol>
+</section>
+
+<section id="shrine">
+  <h2>The Void Crystal Shrine</h2>
+  <p>The shrine is a multiblock that grows. Each tier adds more blocks around and above the last one. As you upgrade, the floating crystal gets bigger and more spells unlock. <b>Hold a wand near the crystal</b> to see miniature ghost blocks wherever the next tier still needs a block.</p>
+
+  <h3>Tier 1 – Arcane Circle</h3>
+  <div class="grid">
+    <div class="card">
+      <b>Floor (top view)</b>
+      <div class="shrine">
+        <div class="B">B</div><div class="B">B</div><div class="R">R</div><div class="B">B</div><div class="B">B</div>
+        <div class="B">B</div><div class="B">B</div><div class="R">R</div><div class="B">B</div><div class="B">B</div>
+        <div class="R">R</div><div class="R">R</div><div class="R">R</div><div class="R">R</div><div class="R">R</div>
+        <div class="B">B</div><div class="B">B</div><div class="R">R</div><div class="B">B</div><div class="B">B</div>
+        <div class="B">B</div><div class="B">B</div><div class="R">R</div><div class="B">B</div><div class="B">B</div>
+      </div>
+      <div class="legend"><span><i class="sw R"></i>Arcane Runestone ×9</span><span><i class="sw B"></i>Shrine base ×16</span></div>
+    </div>
+    <div class="card">
+      <b>Side view</b>
+      <div class="side">  ◆    Void Crystal Core
+  ·    (air gap)
+  ▣    Arcane Pedestal
+B B R B B   floor</div>
+      <p style="margin:8px 0 0;color:var(--muted);font-size:.9rem">The pedestal sits on the centre runestone. The core is placed 2 blocks above the pedestal.</p>
+    </div>
+  </div>
+  <p><b>Shrine base</b> accepts: deepslate bricks or tiles (cracked too), polished deepslate, chiseled deepslate, and polished blackstone bricks.</p>
+
+  <h3>Coming tiers</h3>
+  <div class="tablewrap card"><table>
+    <tr><th>Tier</th><th>Adds</th><th>Unlocks</th></tr>
+    <tr><td>1 · Arcane Circle</td><td>5×5 floor, rune cross, pedestal, core</td><td>Tier 1 spells, Mana Crystals (3), gem charging</td></tr>
+    <tr class="soon"><td>2 · Pylons</td><td>9×9 floor, cyan rune square, 4 corner Catalyst Pylons with crystal tips</td><td>Tier 2 spells, Adept Wand, ingredient rituals</td></tr>
+    <tr class="soon"><td>3 · Obelisks</td><td>Two tall towers with runestones and Void Crystal accents, beam pillar</td><td>Tier 3 spells, Archmage Wand</td></tr>
+    <tr class="soon"><td>4 · Ascended</td><td>Stepped octagonal base, spire crystals, outer rune ring</td><td>Tier 4 spells, Astral Wand</td></tr>
+  </table></div>
+</section>
+
+<section id="ritual">
+  <h2>Learning spells (rituals)</h2>
+  <ol class="card">
+    <li>Right-click the <b>Arcane Pedestal</b> with a spell scroll to place it there. Right-click again with an empty hand to take it back.</li>
+    <li>Right-click the <b>Void Crystal Core</b>. If the shrine tier is high enough for that spell, the ritual starts.</li>
+    <li>Stay within 10 blocks for 5 seconds. A beam rises from the pedestal, the runes light up one by one, and the crystal spins faster.</li>
+    <li>When the ritual finishes, the scroll is consumed and the spell is written into your spellbook.</li>
+  </ol>
+  <p class="note">The ritual breaks if you take the scroll off the pedestal or break part of the shrine. It also fizzles if you walk too far away. In both cases you keep the scroll.</p>
+</section>
+
+<section id="casting">
+  <h2>Casting</h2>
+  <div class="grid">
+    <div class="card"><h3>Spellbook</h3>Right-click it or press <kbd>B</kbd>. There is one tab per school. Click a learned spell to make it your <b>active spell</b>. The book must be <b>somewhere in your inventory</b> for you to cast.</div>
+    <div class="card"><h3>Wand</h3>Right-click to cast the active spell. <kbd>V</kbd> moves to the next spell, and <b>sneak + mouse wheel</b> cycles spells while you hold a wand. You can bind a key for "Previous Spell" in Controls.</div>
+    <div class="card"><h3>Wand tiers</h3>
+      <div class="tablewrap"><table class="compact">
+        <tr><th>Wand</th><th>Max spell</th><th>Cost</th><th>Power</th></tr>
+        <tr><td>Apprentice</td><td>Tier 1</td><td>100%</td><td>100%</td></tr>
+        <tr class="soon"><td>Adept</td><td>Tier 2</td><td>90%</td><td>125%</td></tr>
+        <tr class="soon"><td>Archmage</td><td>Tier 3</td><td>80%</td><td>150%</td></tr>
+        <tr class="soon"><td>Astral</td><td>Tier 4</td><td>70%</td><td>200%</td></tr>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="mana">
+  <h2>Mana</h2>
+  <p>Your mana bar sits just right of the hotbar, with the active spell's icon and cooldown beside it. Everyone starts with <b>100 max mana</b>.</p>
+  <div class="tablewrap card"><table>
+    <tr><th>Source</th><th>How</th></tr>
+    <tr><td>Passive regen</td><td>1 mana per second, all the time</td></tr>
+    <tr><td>Shrine circle</td><td>Stand inside an active shrine's rune circle for 3× regen (more at higher tiers)</td></tr>
+    <tr><td>Moonlight</td><td>Outdoors at night: +25% regen. During a full moon: +75%</td></tr>
+    <tr><td>Mana Potions</td><td>Minor (30), normal (60), Greater (120). Brewed in a brewing stand, see below</td></tr>
+    <tr><td>Mana Gem</td><td>Stores 200 mana, and right-click draws it into you. Recharge it by placing it on an active shrine's pedestal (10 per second per tier)</td></tr>
+    <tr><td>Mana Crystal</td><td>Permanently adds +20 max mana. You can use 3 per shrine tier you have attuned to</td></tr>
+  </table></div>
+  <p>You <b>attune</b> to a shrine by standing in its circle or by activating its crystal. Your attunement is the highest shrine tier you have used.</p>
+</section>
+
+<section id="spells">
+  <h2>Spells</h2>
+  <div class="tablewrap card"><table>
+    <tr><th>Spell</th><th>School</th><th>Tier</th><th>Mana</th><th>Cooldown</th><th>Effect</th></tr>
+    <tr><td>Magic Missile</td><td><span class="pill arcane">Arcane</span></td><td>1</td><td>8</td><td>0.5s</td><td>Straight-flying arcane bolt, 5 damage</td></tr>
+    <tr><td>Light Orb</td><td><span class="pill arcane">Arcane</span></td><td>1</td><td>5</td><td>0.5s</td><td>Places a floating light where you look</td></tr>
+    <tr><td>Minor Heal</td><td><span class="pill nature">Nature</span></td><td>1</td><td>15</td><td>3s</td><td>Heals 2 hearts</td></tr>
+    <tr><td>Fireball</td><td><span class="pill fire">Fire</span></td><td>2</td><td>20</td><td>1.5s</td><td>Blaze-style fireball</td></tr>
+    <tr><td>Frost Nova</td><td><span class="pill frost">Frost</span></td><td>2</td><td>25</td><td>4s</td><td>Damages, slows and freezes everything within 6 blocks</td></tr>
+    <tr><td>Blink</td><td><span class="pill void">Void</span></td><td>2</td><td>20</td><td>2s</td><td>Teleports you up to 8 blocks forward</td></tr>
+    <tr><td>Growth</td><td><span class="pill nature">Nature</span></td><td>2</td><td>15</td><td>2s</td><td>Bone-meals a 5×5 area</td></tr>
+    <tr><td>Lightning Strike</td><td><span class="pill arcane">Arcane</span></td><td>3</td><td>35</td><td>5s</td><td>Calls lightning down on your target</td></tr>
+    <tr><td>Void Shield</td><td><span class="pill void">Void</span></td><td>3</td><td>40</td><td>20s</td><td>Absorption and Resistance</td></tr>
+    <tr><td>Levitate</td><td><span class="pill arcane">Arcane</span></td><td>3</td><td>20</td><td>10s</td><td>Short lift, then slow fall</td></tr>
+    <tr><td>Meteor</td><td><span class="pill fire">Fire</span></td><td>4</td><td>60</td><td>15s</td><td>Explosive meteor from the sky</td></tr>
+    <tr><td>Void Rift</td><td><span class="pill void">Void</span></td><td>4</td><td>60</td><td>15s</td><td>Drags in and damages all creatures nearby</td></tr>
+  </table></div>
+  <p class="note">Tier 2–4 spells already appear in your spellbook. You learn them once the matching shrine tier and wand are added in later updates.</p>
+</section>
+
+<section id="items">
+  <h2>Items &amp; recipes</h2>
+  <div class="tablewrap card"><table>
+    <tr><th>Item</th><th>Recipe</th></tr>
+    <tr><td>Arcane Dust</td><td>Mine Arcane Ore, or smelt/blast the ore block</td></tr>
+    <tr><td>Spellbook</td><td>Book + 2 Arcane Dust + Amethyst Shard (shapeless)</td></tr>
+    <tr><td>Apprentice Wand</td><td>Stick diagonal, with Arcane Dust either side and an Amethyst Shard at the tip</td></tr>
+    <tr><td>Arcane Runestone ×8</td><td>8 Deepslate Bricks around 1 Arcane Dust</td></tr>
+    <tr><td>Arcane Pedestal</td><td>3 Polished Deepslate / Runestone in the middle / 3 Polished Deepslate</td></tr>
+    <tr><td>Void Crystal Core</td><td>Eye of Ender in the centre, Amethyst Shards on the edges, Arcane Dust in the corners</td></tr>
+    <tr><td>Blank Spell Scroll</td><td>Paper + Arcane Dust</td></tr>
+    <tr><td>Spell Scrolls</td><td>Blank Scroll + 2 Arcane Dust + a catalyst: Arrow (Magic Missile), Glowstone Dust (Light Orb), Glistering Melon (Minor Heal). Tier 2 also needs a third dust: Fire Charge (Fireball), Packed Ice (Frost Nova), Ender Pearl (Blink), Bone Block (Growth)</td></tr>
+    <tr><td>Mana Crystal</td><td>Lapis Block in the centre, Arcane Dust on the edges, Amethyst Shards in the corners</td></tr>
+    <tr><td>Mana Gem</td><td>Emerald surrounded by 4 Arcane Dust (plus shape)</td></tr>
+    <tr><td>Mana Potions</td><td>Brewing: Awkward Potion + Arcane Dust → Minor. Then add Glowstone Dust → Mana Potion. Then add an Amethyst Shard → Greater</td></tr>
+  </table></div>
+</section>
+
+<section id="config">
+  <h2>Config</h2>
+  <p>Edit <code>config/tieredarcana-common.toml</code> to change: base max mana, mana per crystal, crystals per shrine tier, regen per second, shrine/night/full-moon regen bonuses, and ritual length.</p>
+</section>
+
+</main>
+</body>
+</html>

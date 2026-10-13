@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " D ",
+    "DGD",
+    " D "
+  ],
+  "key": {
+    "D": {
+      "item": "tieredarcana:arcane_dust"
+    },
+    "G": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "item": "tieredarcana:mana_gem",
+    "count": 1
+  }
+}
